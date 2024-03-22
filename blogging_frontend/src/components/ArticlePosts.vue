@@ -1,0 +1,102 @@
+<template>
+  <div class="ArticlePreview-card">
+    <q-card bordered class="Article-card my-font3">
+        <div class="imageBox">
+            <img src="src/assets/images/sampleimg.jpg" alt="">
+          </div>
+        <q-card-section class="card-section">
+            <div class="topic"><span>technology</span></div>
+            <h5 class="title">Nepal first international payment getway</h5>
+            <div class="articlePublishDetail-Wrapper">
+                <q-avatar class="publisherProfile-icon"><img src="src/assets/images/profile_images/jeevan.jpg" alt=""></q-avatar>
+                <div class="publisher-name"><span>jeevan rawal</span></div>
+                <div class="published-date">2023/01/30</div>
+            </div>
+        </q-card-section>
+    </q-card>
+  </div>
+</template>
+
+<script setup>
+
+</script>
+
+<style scoped>
+.ArticlePreview-card{
+  width: 22vw;
+  padding: 12px;
+  margin-left: 1vw;
+}
+
+.Article-card{
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: none;
+}
+
+.Article-card .imageBox{
+  width: 100%;
+  height: 250px;
+  border-radius: 9px;
+}
+
+.imageBox img{
+  width: 100%;
+  height: 100%;
+  border-radius: 9px;
+  object-fit: cover;
+}
+
+.card-section{
+  padding: 25px 0px 0px 0px;
+}
+
+.card-section .topic{
+    display: inline-block;
+    background-color: #4B6BFB;
+    border-radius: 5px;
+    color: #ffff;
+    padding: 0.5vw;
+    font-size: 0.8vw;
+    opacity: 0.8;
+}
+
+.card-section .title{
+    color: black;
+    margin-top: 1vw;
+    font-size: 1.1vw;
+    font-weight: bolder;
+    line-height: 1.7vw;
+    margin-bottom: 0px;
+}
+
+.card-section .articlePublishDetail-Wrapper{
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin-top: 25px;
+  font-family: italic;
+}
+
+.publisher-name{
+  margin-left: 13px;
+  margin-right: 30px;
+}
+
+@media(max-width: 600px){
+  .card-section .topic{
+    padding: 0.8vw;
+    font-size: 2.3vw;
+}
+
+.card-section .title{
+    font-size: 3vw;
+    line-height: 3.5vw;
+    margin-top: 10px;
+}
+
+}
+
+</style>

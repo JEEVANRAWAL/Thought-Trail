@@ -1,0 +1,86 @@
+// app global css in SCSS form
+.bgColor-body {
+    background-color: #E8E8EA;
+  }
+  .bg-lightGray {
+    background: #F6F6F8 !important;
+  }
+
+  .text-font{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.font-size{
+    letter-spacing: 2px;
+    font-weight:bold;
+  }
+
+  .icon-height_width{
+    width: 70px; 
+    height: 70px;
+  }
+
+  .mobileScreen-icon-height-width{
+    width: 50px;
+    height: 50px;
+  }
+
+  @font-face {
+    font-family: 'Single Day';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/singleday/v17/LYjHdGDjlEgoAcF95EI5jV9tRtXRM_vAklfi4DzhOchwatn58A.119.woff2) format('woff2');
+    unicode-range: U+20-22, U+27-2a, U+2c-38, U+3a-3b, U+3f, U+41-47, U+4a-4c, U+4f-5d, U+61-7b, U+7d, U+a1, U+ab, U+ae, U+b7, U+bb, U+bf, U+2013-2014, U+201c-201d, U+2122, U+ac00, U+ace0, U+ae30, U+b2e4, U+b85c, U+b9ac, U+c0ac, U+c2a4, U+c2dc, U+c774, U+c778, U+c9c0, U+d558;
+  }
+
+  @font-face {
+    font-family: 'Protest Riot';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/protestriot/v2/d6lPkaOxWMKm7TdezXFmpkr80Phh.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh50XSwiPGQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  //google icon style
+
+  .material-symbols-outlined {
+    font-size: 25px;
+  }
+
+  
+  
+  // declare a class which applies it
+  .my-font {
+    font-family: 'Single Day';
+    font-weight: bolder;
+  }
+
+  .my-font2{
+    font-family: 'Protest Riot';
+    color:#3a3a44;
+  }
+
+  .my-font3{
+    font-family: 'Lato';
+  }
+
+  
+  // color styling on Dark Mode
+  .headerDarkMode-Bgcolor{
+    background-color: #171929;
+  }
+
+  .darkModeText-color{
+    color: #ffff !important;
+  }
