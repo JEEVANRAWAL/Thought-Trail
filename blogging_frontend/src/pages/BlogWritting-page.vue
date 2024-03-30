@@ -29,9 +29,11 @@ import buttonComponent from 'src/components/button-component.vue';
 import { computed, ref } from 'vue';
 import {blogsStorage} from 'src/stores/BlogStorage';
 import axios from 'axios';
+import { useQuasar } from 'quasar';
 
 const imgUrls=ref([]);
 const insertedImages= ref([]);
+const $q = useQuasar()
 
 const data= ref({
     title: '',
@@ -74,7 +76,6 @@ function CalculateCurrentUsedImgs(data){
         imgUrls.value.push(imgUrl);
     });
 }
-//console.log(imgUrls.value);
 }
 
 
@@ -100,7 +101,13 @@ function calculateUsedImage(imageUrl){
         insertedImages.value.push(newImgUrl);
     }
 
-   //console.log(insertedImages.value);
+}
+
+// function to clear object value when blog is published
+function clearObjectValues(obj){
+    for(let key in obj){
+        obj[key]=null;
+    }
 }
 
 
@@ -127,10 +134,17 @@ function insertdata(SubmittedData){
     console.log(e);
   });
 
+  // This is for notification pop up
+  $q.notify({
+        message: 'Blog Published.',
+        color: 'green',
+        position: 'top'
+    })
 
   //clearing insertedImages array after submission of blog post. By reassigning it to a new empty array. BUt some time this reassigning approach have chances to get some error/conflict.
   insertedImages.value=[];  //that's way there is splice method in javascript to delete or remove the value of array in js. which is considered a good approach than reassigning approach which i have used in above code
 
+  clearObjectValues(SubmittedData);
 }
 
 

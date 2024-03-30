@@ -20,6 +20,10 @@ const routes = [
       {
         path:'/writeBlog',
         component: ()=> import('pages/BlogWritting-page.vue')
+      },
+      {
+        path:'/contact',
+        component: ()=>import('pages/contactPage.vue')
       }
     ]
   },

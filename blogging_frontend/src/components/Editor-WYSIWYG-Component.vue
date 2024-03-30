@@ -162,7 +162,7 @@ async function myCustomImageThingieHandler () {
 
       const config= {headers:{'Content-Type': 'multipart/form-data'}};
       UrlResponse= await  axios.post('http://127.0.0.1:8000/api/saveImage', formData, config);
-      console.log('Image stored successfully !!');
+      console.log("choosen image stored!!");
       }catch(error){
         console.log(error);
       }

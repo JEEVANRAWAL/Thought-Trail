@@ -28,7 +28,7 @@
                 <q-route-tab to="/blogs" label="Blog" />
                 <q-route-tab to="/singlePost" label="Single Post" disable/>
                 <q-route-tab to="/writeBlog" label="Pages" />
-                <q-route-tab to="#" label="Contact" />
+                <q-route-tab to="/contact" label="Contact" />
               </q-tabs>
 
               <div class="gt-xs q-pa-sm q-mt-sm searchbarSection q-mx-auto" style="width: 500px;">
@@ -127,7 +127,7 @@
             <q-item-section>Pages</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item to="/contact" clickable v-ripple>
             <q-item-section avatar>
               <!-- icon from google font -->
               <span class="material-symbols-outlined">contact_support</span>
