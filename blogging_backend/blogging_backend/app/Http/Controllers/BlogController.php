@@ -13,9 +13,13 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $rowsPerPage= $request->input('rowsPerPage', 10); // two is default value incase if rowsperpage key is not available with its value
+        $currentPage = $request->input('page', 1);
+
+        $Blogs= Blog::paginate($rowsPerPage, ['*'], 'page', $currentPage);
+        return response()->json($Blogs);
     }
 
     /**
@@ -38,6 +42,7 @@ class BlogController extends Controller
         //handling feature image
         $FeaturedImageNewName= 'featuredImg'.time().'.'.$featuredImageFile->getClientOriginalExtension();
         $featuredImageFile->storeAs('public/featuredImages', $FeaturedImageNewName);
+        $FeaturedImageUrl= url('storage/featuredImages/'.$FeaturedImageNewName);
         
         if($insertedImgs && $usedImages){
 
@@ -61,7 +66,7 @@ class BlogController extends Controller
             'user_id'=> 1,
             'title'=> $title,
             'post'=> $post,
-            'featuredImage'=>$FeaturedImageNewName,
+            'featuredImage'=>$FeaturedImageUrl,
             'metaDescription'=>$metaDescription,
             'post_excerpt'=>$post_excerpt
         ]);

@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/postBlog', [BlogController::class, 'create']);
 Route::post('/saveImage', [ImageController::class, 'create']);
+Route::get('/fetchBlogs', [BlogController::class, 'index']);
