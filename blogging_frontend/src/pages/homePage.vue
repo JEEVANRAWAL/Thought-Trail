@@ -7,11 +7,11 @@
                         class="my-card text-white"
                         style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
                     >
-                        <img src="src/assets/images/sampleimg.jpg" alt="image">
+                        <img src="#" alt="image">
                         <div class="card-section">
                             <q-card-section class="details"> 
                                 <div class="topic"><span>Technology</span></div>
-                                <h5 class="title">Nepal first international payment getway</h5>
+                                <h5 class="title">demo</h5>
                             </q-card-section>
                         </div>
                     </q-card>
@@ -21,7 +21,7 @@
             <div class="ArticlePreview-container">
                 <h5 class="articleHeader" id="letest-post">Latest Post</h5>
                 <div class="articlePreviews">
-                    <ArticlePostsVue class="article" v-for="n in 18" :key="n"/>
+                    <ArticlePostsVue class="article" v-for="blog in fetchedData.data" :key="blog.id" :title="blog.title" :imgUrl="blog.featuredImage" />
                 </div>
             </div>
 
@@ -42,8 +42,22 @@
 
 <script setup>
 import ArticlePostsVue from "src/components/ArticlePosts.vue";
+import { onMounted, ref } from "vue";
+import {blogsStorage} from 'src/stores/BlogStorage';
 
+const fetchedData=ref('');
 
+const pinia_state= blogsStorage();
+
+onMounted(async ()=>{
+    const page= pinia_state.page;
+    fetchedData.value= await pinia_state.blogFetcher(page, 9);
+});
+ 
+
+// function Readmore(){
+//     page.value= page.value + 1;
+// }
 </script>
 
 <style scoped>

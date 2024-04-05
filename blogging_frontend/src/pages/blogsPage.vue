@@ -2,7 +2,7 @@
     <div class="ArticlePreview-container">
         <h5 class="articleHeader" id="letest-post">Latest Post</h5>
         <div class="articlePreviews">
-            <ArticlePostsVue class="article" v-for="n in 18" :key="n"/>
+            <ArticlePostsVue class="article" v-for="blog in fetchedData.data" :key="blog.id" :title="blog.title" :imgUrl="blog.featuredImage"/>
         </div>
     </div>
 
@@ -15,17 +15,32 @@
         <q-pagination
         v-model="current"
         color="black"
-        :max="10"
+        :max="max"
         :max-pages="6"
         :boundary-numbers="false"
+        @click="nextPage(current)"
         />
   </div>
 </template>
 
 <script setup>
 import ArticlePostsVue from "src/components/ArticlePosts.vue";
-import { ref } from "vue";
-const current= ref(5)
+import { onMounted, ref } from "vue";
+import { blogsStorage } from "src/stores/BlogStorage";
+const pinia_state= blogsStorage();
+const fetchedData= ref('');
+const current=ref(0);
+const max=ref(0);
+
+onMounted(async()=>{
+fetchedData.value= await pinia_state.blogFetcher(pinia_state.page+1, 1);
+current.value=fetchedData.value.current_page;
+max.value= fetchedData.value.last_page;
+})
+
+async function nextPage(page){
+    fetchedData.value= await pinia_state.blogFetcher(page, 1);
+}
 </script>
 
 <style>

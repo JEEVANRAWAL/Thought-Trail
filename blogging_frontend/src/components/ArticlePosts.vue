@@ -2,11 +2,11 @@
   <div class="ArticlePreview-card">
     <q-card bordered class="Article-card my-font3">
         <div class="imageBox">
-            <img src="src/assets/images/sampleimg.jpg" alt="">
+            <img :src="imgUrl" alt="">
           </div>
         <q-card-section class="card-section">
             <div class="topic"><span>technology</span></div>
-            <h5 class="title">Nepal first international payment getway</h5>
+            <h5 class="title">{{ title }}</h5>
             <div class="articlePublishDetail-Wrapper">
                 <q-avatar class="publisherProfile-icon"><img src="src/assets/images/profile_images/jeevan.jpg" alt=""></q-avatar>
                 <div class="publisher-name"><span>jeevan rawal</span></div>
@@ -18,6 +18,9 @@
 </template>
 
 <script setup>
+import { defineProps } from 'vue';
+
+const props= defineProps(['title', 'imgUrl']);
 
 </script>
 
