@@ -18,7 +18,7 @@ class BlogController extends Controller
         $rowsPerPage= $request->input('rowsPerPage', 10); // two is default value incase if rowsperpage key is not available with its value
         $currentPage = $request->input('page', 1);
 
-        $Blogs= Blog::paginate($rowsPerPage, ['*'], 'page', $currentPage);
+        $Blogs= Blog::orderBy('created_at', 'desc')->paginate($rowsPerPage, ['*'], 'page', $currentPage);
         return response()->json($Blogs);
     }
 
