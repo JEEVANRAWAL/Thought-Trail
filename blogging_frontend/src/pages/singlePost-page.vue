@@ -1,8 +1,8 @@
 <template>
    <q-page-container>
         <q-page padding>
-          <div v-for="n in blogwarehouse.blog" :key="n">
-            <div v-html="n.content"></div>
+          <div>
+            <div v-html="pinia_state.fullBlog"></div>
           </div>
         </q-page>
     </q-page-container>
@@ -11,7 +11,7 @@
 <script setup>
 import {blogsStorage} from 'src/stores/BlogStorage'
 
-const blogwarehouse= blogsStorage();
+const pinia_state= blogsStorage();
 </script>
 
 <style>

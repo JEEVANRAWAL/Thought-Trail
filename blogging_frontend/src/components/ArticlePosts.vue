@@ -1,19 +1,21 @@
 <template>
   <div class="ArticlePreview-card">
-    <q-card bordered class="Article-card my-font3">
-        <div class="imageBox">
-            <img :src="imgUrl" alt="">
+    <router-link class="link" to="/singlePost">
+      <q-card clickable bordered class="Article-card my-font3 cursor-pointer">
+          <div class="imageBox">
+            <img :src="imgUrl" alt="image">
           </div>
-        <q-card-section class="card-section">
-            <div class="topic"><span>technology</span></div>
-            <h5 class="title">{{ title }}</h5>
-            <div class="articlePublishDetail-Wrapper">
-                <q-avatar class="publisherProfile-icon"><img src="src/assets/images/profile_images/jeevan.jpg" alt=""></q-avatar>
-                <div class="publisher-name"><span>jeevan rawal</span></div>
-                <div class="published-date">2023/01/30</div>
-            </div>
-        </q-card-section>
-    </q-card>
+          <q-card-section class="card-section">
+              <div class="topic"><span>technology</span></div>
+              <h5 class="title">{{ title }}</h5>
+              <div class="articlePublishDetail-Wrapper">
+                  <q-avatar class="publisherProfile-icon"><img src="src/assets/images/profile_images/jeevan.jpg" alt=""></q-avatar>
+                  <div class="publisher-name"><span>jeevan rawal</span></div>
+                  <div class="published-date">2023/01/30</div>
+              </div>
+          </q-card-section>
+      </q-card>
+    </router-link>
   </div>
 </template>
 
@@ -29,6 +31,10 @@ const props= defineProps(['title', 'imgUrl']);
   width: 22vw;
   padding: 12px;
   margin-left: 1vw;
+}
+
+.ArticlePreview-card .link{
+  text-decoration: none;
 }
 
 .Article-card{

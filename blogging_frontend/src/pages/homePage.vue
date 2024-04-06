@@ -1,17 +1,17 @@
 <template>
     <q-page-container style="padding-top:30px ; padding-bottom: 20px;">
         <q-page padding>
-            <div clickable class="mainCard_container cursor-pointer">
+            <div clickable v-if="fetchedData.data" @click="pinia_state.action(fetchedData.data[0].post)" class="mainCard_container cursor-pointer">
                 <router-link to="/singlePost">
                     <q-card
                         class="my-card text-white"
                         style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
                     >
-                        <img src="#" alt="image">
+                        <img :src="fetchedData.data[0].featuredImage" alt="image">
                         <div class="card-section">
                             <q-card-section class="details"> 
                                 <div class="topic"><span>Technology</span></div>
-                                <h5 class="title">demo</h5>
+                                <h5 class="title">{{ fetchedData.data[0].title }}</h5>
                             </q-card-section>
                         </div>
                     </q-card>
@@ -21,7 +21,7 @@
             <div class="ArticlePreview-container">
                 <h5 class="articleHeader" id="letest-post">Latest Post</h5>
                 <div class="articlePreviews">
-                    <ArticlePostsVue class="article" v-for="blog in fetchedData.data" :key="blog.id" :title="blog.title" :imgUrl="blog.featuredImage" />
+                    <ArticlePostsVue @click="pinia_state.action(blog.post)" class="article" v-for="blog in fetchedData.data" :key="blog.id" :title="blog.title" :imgUrl="blog.featuredImage" />
                 </div>
             </div>
 

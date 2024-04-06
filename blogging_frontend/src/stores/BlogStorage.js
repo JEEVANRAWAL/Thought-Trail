@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const blogsStorage= defineStore('blogStore',()=>{
-    const rowsPerPage= ref(null);
+    const fullBlog= ref('');
     const page= ref(1);
 
 
@@ -17,8 +17,8 @@ export const blogsStorage= defineStore('blogStore',()=>{
     };
 
     function action(data){
-        page.value= page.value + 1;
+        fullBlog.value= data;
     }
 
-    return{ rowsPerPage, page, blogFetcher}
+    return{ fullBlog, page, blogFetcher, action}
 })

@@ -2,7 +2,7 @@
     <div class="ArticlePreview-container">
         <h5 class="articleHeader" id="letest-post">Latest Post</h5>
         <div class="articlePreviews">
-            <ArticlePostsVue class="article" v-for="blog in fetchedData.data" :key="blog.id" :title="blog.title" :imgUrl="blog.featuredImage"/>
+            <ArticlePostsVue @click="pinia_state.action(blog.post)" class="article" v-for="blog in fetchedData.data" :key="blog.id" :title="blog.title" :imgUrl="blog.featuredImage"/>
         </div>
     </div>
 
@@ -33,13 +33,13 @@ const current=ref(0);
 const max=ref(0);
 
 onMounted(async()=>{
-fetchedData.value= await pinia_state.blogFetcher(pinia_state.page+1, 1);
+fetchedData.value= await pinia_state.blogFetcher(pinia_state.page+1, 15);
 current.value=fetchedData.value.current_page;
 max.value= fetchedData.value.last_page;
 })
 
 async function nextPage(page){
-    fetchedData.value= await pinia_state.blogFetcher(page, 1);
+    fetchedData.value= await pinia_state.blogFetcher(page, 15);
 }
 </script>
 
