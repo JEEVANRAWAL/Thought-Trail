@@ -27,8 +27,11 @@
                 <q-route-tab to="/" label="Home"/>
                 <q-route-tab to="/blogs" label="Blog" />
                 <q-route-tab to="/singlePost" label="Single Post" disable/>
-                <q-route-tab to="/writeBlog" label="Pages" />
                 <q-route-tab to="/contact" label="Contact" />
+                <q-route-tab class="route-tab" to="/writeBlog" label=""> 
+                  <span class="material-symbols-outlined">edit_square <span class="write-label my-font2">write</span></span> 
+                  
+                </q-route-tab>
               </q-tabs>
 
               <div class="gt-xs q-pa-sm q-mt-sm searchbarSection q-mx-auto" style="width: 500px;">
@@ -119,20 +122,19 @@
             <q-item-section>Single Post</q-item-section>
           </q-item>
 
-          <q-item to="/writeBlog" clickable v-ripple>
-            <q-item-section avatar>
-              <!-- icon from google font -->
-              <span class="material-symbols-outlined">pages</span>
-            </q-item-section>
-            <q-item-section>Pages</q-item-section>
-          </q-item>
-
           <q-item to="/contact" clickable v-ripple>
             <q-item-section avatar>
               <!-- icon from google font -->
               <span class="material-symbols-outlined">contact_support</span>
             </q-item-section>
             <q-item-section>Contact</q-item-section>
+          </q-item>
+          
+          <q-item to="/writeBlog" clickable v-ripple>
+            <q-item-section avatar>
+              <!-- icon from google font -->
+              <span class="material-symbols-outlined">edit_square <span class="write-label my-font2">write</span></span> 
+            </q-item-section>
           </q-item>
         </q-list>
       </q-scroll-area>
@@ -201,8 +203,12 @@ import { Platform, useQuasar } from 'quasar'
 
 </script>
 
-<style>
+<style scoped>
 
+.write-label{
+  font-size: 18px;
+  margin-left: 10px;
+}
 
 
 </style>
