@@ -23,7 +23,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * This function creates blog post
      */
     public function create(Request $request)
     {

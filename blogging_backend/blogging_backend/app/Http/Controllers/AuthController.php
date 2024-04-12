@@ -46,13 +46,13 @@ class AuthController extends Controller
             if($user instanceof \App\Models\User){
                 $token= $user->createToken('token')->plainTextToken;
                 $cookie= cookie('jwt', $token, 60*24);
-                return response(['message'=>'loged in successfully'])->withCookie($cookie);
+                return response(['message'=>'loged in successfully', 'jwt'=>$token])->withCookie($cookie);
             }
         }
     }
 
     public function user(){
-        $user = Auth::user();
-        return $user;
+       $user = Auth::user();
+        return response(['user'=>$user]);
     }
 }

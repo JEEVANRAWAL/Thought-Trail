@@ -19,11 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/userRegister', [AuthController::class, 'register']);
 Route::post('/login',[AuthController::class, 'login']);
-Route::get('/getUser',[AuthController::class, 'user']);
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::post('/postBlog', [BlogController::class, 'create']);
 Route::post('/saveImage', [ImageController::class, 'create']);
 Route::get('/fetchBlogs', [BlogController::class, 'index']);
+
+
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/getUser',[AuthController::class, 'user']);
+    Route::post('/postBlog', [BlogController::class, 'create']);
+
+});
