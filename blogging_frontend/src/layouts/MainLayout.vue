@@ -30,7 +30,6 @@
                 <q-route-tab to="/contact" label="Contact" />
                 <q-route-tab class="route-tab" to="/writeBlog" label=""> 
                   <span class="material-symbols-outlined">edit_square <span class="write-label my-font2">write</span></span> 
-                  
                 </q-route-tab>
               </q-tabs>
 
@@ -94,7 +93,7 @@
           <q-icon v-if="searchInputText !== ''" name="close" @click="searchInputText = ''" class="cursor-pointer"/>
           <q-icon name="search" />
           </template>
-
+          
         </q-input>
       </div>
       <!-- menu area -->
@@ -166,6 +165,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import { Platform, useQuasar } from 'quasar'
+import { blogsStorage } from 'src/stores/BlogStorage';
 
   const $q = useQuasar()
   const searchInputText= ref('');
@@ -174,6 +174,7 @@ import { Platform, useQuasar } from 'quasar'
   const rightDrawerOpen = ref(false)
   const fadeTimeout= ref(null);
   const toolTip=ref();
+  const pinia_state= blogsStorage();
 
   // side navbar toggle section
   function toggleLeftDrawer () {
@@ -200,6 +201,10 @@ import { Platform, useQuasar } from 'quasar'
   function hideTooltip(){
     toolTip.value.hide();
   }
+
+  onMounted(async()=>{
+    await pinia_state.checkUserAuthentication();
+  });
 
 </script>
 
