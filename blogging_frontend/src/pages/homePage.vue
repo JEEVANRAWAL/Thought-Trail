@@ -31,6 +31,7 @@
                 </router-link>
             </div>
 
+            <DialogComponent v-model="dialog"/>
 
           <!-- place QPageScroller at end of page -->
           <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
@@ -44,20 +45,26 @@
 import ArticlePostsVue from "src/components/ArticlePosts.vue";
 import { onMounted, ref } from "vue";
 import {blogsStorage} from 'src/stores/BlogStorage';
+import DialogComponent from "src/components/DialogComponent.vue"
 
 const fetchedData=ref('');
+const dialog=ref(false);
 
 const pinia_state= blogsStorage();
 
 onMounted(async ()=>{
     const page= pinia_state.page;
     fetchedData.value= await pinia_state.blogFetcher(page, 9);
+
+    if(!pinia_state.logedIn_userData){
+        setTimeout(()=>{
+            dialog.value=true;
+        }, 60000)
+    }
 });
  
 
-// function Readmore(){
-//     page.value= page.value + 1;
-// }
+
 </script>
 
 <style scoped>
