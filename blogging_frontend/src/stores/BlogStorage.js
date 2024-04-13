@@ -4,7 +4,7 @@ import { reactive, ref } from "vue";
 export const blogsStorage= defineStore('blogStore',()=>{
     const fullBlog= ref('');
     const page= ref(1);
-    const logedIn_userData=reactive('');
+    const logedIn_userData= ref('');
 
 
     const blogFetcher= async (page, rowsPerPage)=>{
@@ -19,9 +19,13 @@ export const blogsStorage= defineStore('blogStore',()=>{
 
     async function checkUserAuthentication(){
         try{
-            const response = await fetch('http://127.0.0.1:8000/api/getUser');
+            const response = await fetch('http://127.0.0.1:8000/api/getUser', {
+                credentials: 'include'
+            });
             const data = await response.json();
-            console.log(data);
+            // console.log(data.user.id);
+            logedIn_userData.value= data.user;
+            
         }catch(error){
             console.error("error occures during retriving user", error);
         }

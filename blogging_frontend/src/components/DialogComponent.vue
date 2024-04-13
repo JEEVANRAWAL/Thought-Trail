@@ -14,7 +14,7 @@
         </q-card-section>
 
         <q-card-section>
-          <q-btn color="green"  label="Login" @click="login(loginData)"/>
+          <q-btn color="green"  label="Login" @click="login()"/>
         </q-card-section>
 
       </q-card>
@@ -22,24 +22,33 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import axios from 'axios';
+import { blogsStorage } from 'src/stores/BlogStorage';
+import { useRouter } from 'vue-router';
 
+const pinia_state= blogsStorage();
+const router= useRouter();
+const backdropFilter='blur(4px) saturate(150%)';
+const dense=ref(false);
 
 const loginData=reactive({
   email:'',
   password:''
 })
 
-async function login(data){
-  const jsonformatedData= JSON.stringify(data)
-  const config= {headers:{'Content-Type': 'application/json'}}
+async function login(){
+  const jsonformatedData= JSON.stringify(loginData)
+  const config= {headers:{'Content-Type': 'application/json'}, withCredentials: true}
   try{
     // console.log(jsonformatedData);
     const response= await axios.post('http://127.0.0.1:8000/api/login', jsonformatedData, config);
-    console.log(response.data);
+    if(response.status === 200){
+      console.log(response.data);
+      pinia_state.checkUserAuthentication();
+    }
   }catch(error){
-
+    console.log('error occurs while login. ', error.response.data.message)
   }
 }
 

@@ -59,7 +59,7 @@ onMounted(async ()=>{
     if(!pinia_state.logedIn_userData){
         setTimeout(()=>{
             dialog.value=true;
-        }, 60000)
+        }, 600)
     }
 });
  

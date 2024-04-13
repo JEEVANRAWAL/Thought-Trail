@@ -163,7 +163,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onBeforeMount, onMounted, ref } from 'vue'
 import { Platform, useQuasar } from 'quasar'
 import { blogsStorage } from 'src/stores/BlogStorage';
 
@@ -202,8 +202,9 @@ import { blogsStorage } from 'src/stores/BlogStorage';
     toolTip.value.hide();
   }
 
-  onMounted(async()=>{
+  onBeforeMount(async()=>{
     await pinia_state.checkUserAuthentication();
+    console.log(pinia_state.logedIn_userData);
   });
 
 </script>
