@@ -31,6 +31,7 @@ const pinia_state= blogsStorage();
 const router= useRouter();
 const backdropFilter='blur(4px) saturate(150%)';
 const dense=ref(false);
+const emit= defineEmits(['changeDialogState'])
 
 const loginData=reactive({
   email:'',
@@ -46,6 +47,8 @@ async function login(){
     if(response.status === 200){
       console.log(response.data);
       pinia_state.checkUserAuthentication();
+
+      emit('changeDialogState');
     }
   }catch(error){
     console.log('error occurs while login. ', error.response.data.message)

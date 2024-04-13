@@ -31,7 +31,7 @@
                 </router-link>
             </div>
 
-            <DialogComponent v-model="dialog"/>
+            <DialogComponent v-model="dialog" @changeDialogState="dialog=false"/>
 
           <!-- place QPageScroller at end of page -->
           <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
