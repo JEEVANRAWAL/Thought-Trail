@@ -1,3 +1,4 @@
+import { Meta } from 'quasar'
 
 const routes = [
   {
@@ -11,19 +12,23 @@ const routes = [
       },
       {
         path:'/blogs',
-        component: ()=> import('pages/blogsPage.vue')
+        component: ()=> import('pages/blogsPage.vue'),
+        meta:{auth: true}
       },
       {
         path:'/singlePost',
-        component: ()=> import('pages/singlePost-page.vue')
+        component: ()=> import('pages/singlePost-page.vue'),
+        meta:{auth:true}
       },
       {
         path:'/writeBlog',
-        component: ()=> import('pages/BlogWritting-page.vue')
+        component: ()=> import('pages/BlogWritting-page.vue'),
+        meta:{auth:true}
       },
       {
         path:'/contact',
-        component: ()=>import('pages/contactPage.vue')
+        component: ()=>import('pages/contactPage.vue'),
+        meta:{auth:true}
       }
     ]
   },

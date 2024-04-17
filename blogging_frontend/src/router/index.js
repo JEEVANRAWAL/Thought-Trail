@@ -1,6 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
+import { blogsStorage } from 'src/stores/BlogStorage'
 
 /*
  * If not building with SSR mode, you can
@@ -25,6 +26,20 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE)
   })
+
+  const state= blogsStorage();
+
+  Router.beforeEach((to, from, next)=>{
+    //console.log(to);
+    if(to.meta.auth && state.logedIn_userData){
+      console.log('hello from route');
+      next();
+    }else if(to.meta.auth && !state.logedIn_userData){
+      next('/');
+    }else{
+      next();
+    }
+  });
 
   return Router
 })

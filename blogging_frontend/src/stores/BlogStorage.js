@@ -27,7 +27,7 @@ export const blogsStorage= defineStore('blogStore',()=>{
             logedIn_userData.value= data.user;
             
         }catch(error){
-            console.error("error occures during retriving user", error);
+            console.error("error occures during retriving user.", error.message);
         }
     }
 
