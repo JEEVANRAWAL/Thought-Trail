@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -18,7 +19,7 @@ class BlogController extends Controller
         $rowsPerPage= $request->input('rowsPerPage', 10); // two is default value incase if rowsperpage key is not available with its value
         $currentPage = $request->input('page', 1);
 
-        $Blogs= Blog::orderBy('created_at', 'desc')->paginate($rowsPerPage, ['*'], 'page', $currentPage);
+        $Blogs= Blog::with('User')->orderBy('created_at', 'desc')->paginate($rowsPerPage, ['*'], 'page', $currentPage);
         return response()->json($Blogs);
     }
 
@@ -63,7 +64,7 @@ class BlogController extends Controller
         
        
         Blog::create([
-            'user_id'=> 1,
+            'user_id'=> Auth::user()->id,
             'title'=> $title,
             'post'=> $post,
             'featuredImage'=>$FeaturedImageUrl,
