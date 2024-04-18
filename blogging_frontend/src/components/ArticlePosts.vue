@@ -10,8 +10,8 @@
               <h5 class="title">{{ title }}</h5>
               <div class="articlePublishDetail-Wrapper">
                   <q-avatar class="publisherProfile-icon"><img src="src/assets/images/profile_images/jeevan.jpg" alt=""></q-avatar>
-                  <div class="publisher-name"><span>jeevan rawal</span></div>
-                  <div class="published-date">2023/01/30</div>
+                  <div class="publisher-name"><span>{{ publisher }}</span></div>
+                  <div class="published-date">{{ blogPublishedDate }}</div>
               </div>
           </q-card-section>
       </q-card>
@@ -20,10 +20,26 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 
-const props= defineProps(['title', 'imgUrl']);
+const blogPublishedDate=ref('');
+const props= defineProps(['title', 'imgUrl', 'publishedDateTime', 'publisher']);
+const dateTimeString=ref(props.publishedDateTime);
 
+function extractDate() {
+    // Create a new Date object with the given date and time string
+    var dateTime = new Date(dateTimeString.value);
+
+    // Extract the date components
+    var year = dateTime.getFullYear();
+    var month = dateTime.getMonth() + 1; // Note: January is 0, so we add 1
+    var day = dateTime.getDate();
+
+    // Return the date components as a formatted string
+    return year + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
+}
+
+blogPublishedDate.value= extractDate()
 </script>
 
 <style scoped>

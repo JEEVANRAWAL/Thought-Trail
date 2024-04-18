@@ -204,7 +204,7 @@ import { blogsStorage } from 'src/stores/BlogStorage';
 
   onBeforeMount(async()=>{
     await pinia_state.checkUserAuthentication();
-    console.log(pinia_state.logedIn_userData);
+    // console.log(pinia_state.logedIn_userData);
   });
 
 </script>

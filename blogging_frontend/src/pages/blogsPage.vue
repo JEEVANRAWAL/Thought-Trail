@@ -2,7 +2,7 @@
     <div class="ArticlePreview-container">
         <h5 class="articleHeader" id="letest-post">Latest Post</h5>
         <div class="articlePreviews">
-            <ArticlePostsVue @click="pinia_state.action(blog.post)" class="article" v-for="blog in fetchedData.data" :key="blog.id" :title="blog.title" :imgUrl="blog.featuredImage"/>
+            <ArticlePostsVue @click="pinia_state.action(blog.post)" class="article" v-for="blog in fetchedData.data" :key="blog.id" :title="blog.title" :imgUrl="blog.featuredImage" :publisher="blog.user.name" :publishedDateTime="blog.created_at"/>
         </div>
     </div>
 
