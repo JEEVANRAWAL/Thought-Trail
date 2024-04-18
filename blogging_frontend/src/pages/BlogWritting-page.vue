@@ -113,7 +113,7 @@ function clearObjectValues(obj){
 
 function insertdata(SubmittedData){
     // console.log("data"+SubmittedData);
-    const config= {headers:{'Content-Type': 'multipart/form-data'}};
+    const config= {headers:{'Content-Type': 'multipart/form-data'}, withCredentials:true};
     const data= new FormData();
     data.append('title', SubmittedData.title);
             data.append('post', SubmittedData.post);
@@ -130,16 +130,21 @@ function insertdata(SubmittedData){
   
       axios.post('http://127.0.0.1:8000/api/postBlog', data, config).then((response)=>{
           console.log(response);
+          // This is for notification pop up
+          $q.notify({
+                message: 'Blog Published.',
+                color: 'green',
+                position: 'top'
+            })
       }).catch(e=>{
-    console.log(e);
+            console.log(e);
+            $q.notify({
+                        message: e.response.statusText,
+                        color: 'red',
+                        position: 'top'
+                    })
   });
 
-  // This is for notification pop up
-  $q.notify({
-        message: 'Blog Published.',
-        color: 'green',
-        position: 'top'
-    })
 
   //clearing insertedImages array after submission of blog post. By reassigning it to a new empty array. BUt some time this reassigning approach have chances to get some error/conflict.
   insertedImages.value=[];  //that's way there is splice method in javascript to delete or remove the value of array in js. which is considered a good approach than reassigning approach which i have used in above code
