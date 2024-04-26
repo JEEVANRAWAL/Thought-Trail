@@ -26,6 +26,7 @@ import { reactive, ref } from 'vue';
 import axios from 'axios';
 import { blogsStorage } from 'src/stores/BlogStorage';
 import { useRouter } from 'vue-router';
+import { domain } from 'src/assets/domainName/domain';
 
 const pinia_state= blogsStorage();
 const router= useRouter();
@@ -43,7 +44,7 @@ async function login(){
   const config= {headers:{'Content-Type': 'application/json'}, withCredentials: true}
   try{
     // console.log(jsonformatedData);
-    const response= await axios.post('http://127.0.0.1:8000/api/login', jsonformatedData, config);
+    const response= await axios.post(domain+'api/login', jsonformatedData, config);
     if(response.status === 200){
       console.log(response.data);
       pinia_state.checkUserAuthentication();

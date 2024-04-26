@@ -30,6 +30,7 @@ import { computed, ref } from 'vue';
 import {blogsStorage} from 'src/stores/BlogStorage';
 import axios from 'axios';
 import { useQuasar } from 'quasar';
+import { domain } from 'src/assets/domainName/domain';
 
 const imgUrls=ref([]);
 const insertedImages= ref([]);
@@ -128,7 +129,7 @@ function insertdata(SubmittedData){
                 data.append('insertedImgs[]', image);
             });
   
-      axios.post('http://127.0.0.1:8000/api/postBlog', data, config).then((response)=>{
+      axios.post(domain+'api/postBlog', data, config).then((response)=>{
           console.log(response);
           // This is for notification pop up
           $q.notify({

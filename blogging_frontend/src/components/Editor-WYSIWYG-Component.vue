@@ -142,6 +142,7 @@
 <script setup>
 import { ref, defineEmits } from "vue";
 import axios from 'axios';
+import { domain } from "src/assets/domainName/domain";
 
 const editor=ref();
 const image=ref();
@@ -160,7 +161,7 @@ async function myCustomImageThingieHandler () {
       try{
 
       const config= {headers:{'Content-Type': 'multipart/form-data'}};
-      UrlResponse= await  axios.post('http://127.0.0.1:8000/api/saveImage', formData, config);
+      UrlResponse= await  axios.post(domain+'api/saveImage', formData, config);
       console.log("choosen image stored!!");
       }catch(error){
         console.log(error);

@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { reactive, ref } from "vue";
+import { domain } from "src/assets/domainName/domain";
 
 export const blogsStorage= defineStore('blogStore',()=>{
     const fullBlog= ref('');
@@ -9,7 +10,7 @@ export const blogsStorage= defineStore('blogStore',()=>{
 
     const blogFetcher= async (page, rowsPerPage)=>{
         try{
-            const response= await fetch(`http://127.0.0.1:8000/api/fetchBlogs?page=${page}&rowsPerPage=${rowsPerPage}`);
+            const response= await fetch(domain+`api/fetchBlogs?page=${page}&rowsPerPage=${rowsPerPage}`);
             const data = await response.json();
             return data;
         }catch(error){
@@ -19,7 +20,7 @@ export const blogsStorage= defineStore('blogStore',()=>{
 
     async function checkUserAuthentication(){
         try{
-            const response = await fetch('http://127.0.0.1:8000/api/getUser', {
+            const response = await fetch(domain+'api/getUser', {
                 credentials: 'include'
             });
             const data = await response.json();
