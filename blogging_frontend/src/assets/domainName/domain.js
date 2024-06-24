@@ -1,1 +1,1 @@
-export const domain= 'https://blogapi.jeevanrawal.com.np/';
+export const domain= 'http://localhost:8000/';
